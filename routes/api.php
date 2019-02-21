@@ -17,9 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login');
-Route::post('recover', 'AuthController@recover');
+Route::post('register', 'AuthController@register')->name("api.register");
+Route::post('login', 'AuthController@login')->name("api.login");
+Route::post('recover', 'AuthController@recover')->name("api.recover");
 Route::group(['middleware' => ['jwt.auth']], function() {
-    Route::get('logout', 'AuthController@logout');
+    Route::get('logout', 'AuthController@logout')->name("api.logout");
 });
