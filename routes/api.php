@@ -22,4 +22,8 @@ Route::post('login', 'AuthController@login')->name("api.login");
 Route::post('recover', 'AuthController@recover')->name("api.recover");
 Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('logout', 'AuthController@logout')->name("api.logout");
+    Route::get('test', function(){
+        return response()->json(['foo'=>'bar']);
+    });
 });
+
